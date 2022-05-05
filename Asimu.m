@@ -1,15 +1,15 @@
-% clear all
-% % topology graph
-% [r, edge, D, L, Omega, w] = affineGraph();
-% [n,m] = size(D);
-% d = size(r,2);
-% 
-% % trajectory xr = Ar+b
-% via_ = sttraj(r, edge, m);
-% dt = 0.01; acc = 10;
-% [rTra, rTrad, rTradd, tr] = mstraj_(via_, 2*ones(1,6), dt, acc);
-% [desPos, desPosd, desPosdd] = dptraj(r, rTra, rTrad, rTradd, tr);
-% [desYaw, desYawd, desYawdd] = dytraj(desPosd, tr, dt);
+clear all
+% topology graph
+[r, edge, D, L, Omega, w] = affineGraph();
+[n,m] = size(D);
+d = size(r,2);
+
+% trajectory xr = Ar+b
+via_ = sttraj(r, edge, m);
+dt = 0.01; acc = 10;
+[rTra, rTrad, rTradd, tr] = mstraj_(via_, 2*ones(1,6), dt, acc);
+[desPos, desPosd, desPosdd] = dptraj(r, rTra, rTrad, rTradd, tr);
+[desYaw, desYawd, desYawdd] = dytraj(desPosd, tr, dt);
 % verify_desPos(desPos, desPosd, desPosdd, tr, dt);
 % verify_desYaw(desPos, desYaw, desYawd, desYawdd, tr, dt);
 
@@ -32,7 +32,7 @@ for i=4:7
     Tao{i}(1,:) = zeros(1,3); 
     [Eta{i}(1,:), Etad{i}(1,:), Etadd{i}(1,:), V{i}(1,:), ...
          C__{i}(1,:), D__{i}(1,:), M__{i}(1,:), F{i}(1,:)] = ...
-            plant(Eta{i}(1,:)', V{i}(1,:)', Tao{i}(1,:)', t, dt);     
+            plant(Eta{i}(1,:)', V{i}(1,:)', Tao{i}(1,:)', 0, dt);     
     
     ada{i}(1,:) = [0, 0, 0, 0, 0];
     sum_ada{i}(1,:) = 0;
