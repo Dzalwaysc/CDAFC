@@ -2,11 +2,6 @@
 
 for i=1:7
     Eta_Err{i} = [desPos{i},desYaw{1}]-Eta{i};
-    for j=1:size(desPos{1},1)
-        if abs(Eta_Err{i}(j,3))>0.1
-            Eta_Err{i}(j,3) = Eta_Err{i}(j,3) - 0.1*sign(Eta_Err{i}(j,3));
-        end
-    end
 end
 
 
