@@ -1,14 +1,3 @@
-count = 1;
-for i=1:48000
-    if i == 1 || mod(i,25) == 0
-        for j=1:7
-            Eta1{j}(count,:) = Eta{j}(i,:);
-            tr1(count) = tr(i);
-        end
-        count = count + 1;
-    end
-end
-
 % % 轨迹图
 figure(3);
 plot(Eta1{1}(:,1), Eta1{1}(:,2), '-', 'Color', [0.4660 0.6740 0.1880], 'LineWidth', 1);
