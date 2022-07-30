@@ -1,8 +1,8 @@
 function [xx yy]=ship_contour(ship,L,B,L01)
-%ship:´¬²°ÔË¶¯Ñ§ºÍ¶¯Á¦Ñ§Êý¾Ý£¬6Î¬ÏòÁ¿
-%L:´¬³¤£¬m
-%B:´¬¿í£¬m
-%L01£º´¬ô¼µ½´¬ÖØÐÄµÄ¾àÀë£¬m
+%ship:èˆ¹èˆ¶è¿åŠ¨å­¦å’ŒåŠ¨åŠ›å­¦æ•°æ®ï¼Œ6ç»´å‘é‡
+%L:èˆ¹é•¿ï¼Œm
+%B:èˆ¹å®½ï¼Œm
+%L01ï¼šèˆ¹è‰åˆ°èˆ¹é‡å¿ƒçš„è·ç¦»ï¼Œm
 x=ship(1,1);
 y=ship(2,1);
 phi=ship(3,1);
