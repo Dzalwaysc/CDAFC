@@ -1,4 +1,4 @@
-function [eta, etad, V, C__, D__, M__] = platform(state, tao, step, t)
+function [eta, etad, etadd, V, C__, D__, M__] = platform(state, tao, step, t)
     % start stage
     dstate = plant(t, state, tao);
     K1 = dstate;
@@ -40,4 +40,7 @@ function [eta, etad, V, C__, D__, M__] = platform(state, tao, step, t)
     M_ = R*M*R'; M__ = M_(:);
     C_ = R*(C-M*R'*dR)*R'; C__ = C_(:);
     D_ = R*D*R'; D__ = D_(:);
+    taod = [-2*cos(0.05*t)*cos(0.3*t)-3; 1.5*sin(0.03*t); 0.6*sin(0.05*t)*cos(0.01*t)];
+    F_ = inv(M_)*(-C_*etad-D_*etad+R*taod);
+    etadd = F_+inv(M_)*R*tao;
 end
