@@ -26,7 +26,7 @@ for i=4:7
     Eta{i}(1,:) = obEta(Pos{i}(1,:), Yaw{i}(1));
     V{i}(1,:) = zeros(1,3);
     Tao{i}(1,:) = zeros(1,3); 
-    [Eta{i}(1,:), Etad{i}(1,:), V{i}(1,:), C__{i}(1,:), D__{i}(1,:), M__{i}(1,:)] = ...
+    [Eta{i}(1,:), Etad{i}(1,:), Etadd{i}(1,:), V{i}(1,:), C__{i}(1,:), D__{i}(1,:), M__{i}(1,:)] = ...
             platform([Eta{i}(1,:)'; V{i}(1,:)'], Tao{i}(1,:)', dt, 0);   
 end
 
@@ -45,9 +45,9 @@ for t=tr(1):dt:tr(end-1)
     end        
     
     for i=4:7
-        tao = ctrEta(i, w, D, Eta, Etad, M__, C__, D__, loop);
+        tao = ctrEta(i, w, D, Eta, Etad, Etadd, M__, C__, D__, loop);
         Tao{i}(loop,:) = tao;
-        [Eta{i}(loop+1,:), Etad{i}(loop+1,:), V{i}(loop+1,:), C__{i}(loop+1,:), D__{i}(loop+1,:), M__{i}(loop+1,:)] = ...
+        [Eta{i}(loop+1,:), Etad{i}(loop+1,:), Etadd{i}(loop+1,:), V{i}(loop+1,:), C__{i}(loop+1,:), D__{i}(loop+1,:), M__{i}(loop+1,:)] = ...
             platform([Eta{i}(loop,:)'; V{i}(loop,:)'], Tao{i}(loop,:)', dt, t);
     end
     fprintf('The time is %f\n', t);
